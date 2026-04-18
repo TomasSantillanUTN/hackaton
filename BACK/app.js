@@ -4,6 +4,7 @@ import cors from 'cors';
 import AtaqueRoute from "./routes/ataque.route.js"
 import RefuerzoRoute from "./routes/refuerzo.route.js"
 import MovimientoRoute from "./routes/movimiento.route.js"
+import JuegoRoute from "./routes/juego.route.js"
 
 const app = express();
 const PORT = 3000;
@@ -23,6 +24,10 @@ app.get("/", (req, res) => {
 } )
 
 // routers
+app.use("/juego", JuegoRoute)
+app.use("/refuerzo", RefuerzoRoute)
+app.use("/ataque", AtaqueRoute)
+app.use("/movimiento", MovimientoRoute)
 app.use("/teg/atacar", AtaqueRoute)
 app.use("/teg/reforzar", RefuerzoRoute)
 app.use("/teg/movimiento", MovimientoRoute)

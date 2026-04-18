@@ -1,13 +1,8 @@
 export class Jugador {
-  constructor({
-    id,
-    nombre,
-    tipo = "human",
-    color = "gray",
-  }) {
+  constructor(id, nombre, tipo = "humano", color = "gris") {
     this.id = id;
     this.nombre = nombre;
-    this.tipo = tipo; // "human" | "bot"
+    this.tipo = tipo;
     this.color = color;
   }
 }

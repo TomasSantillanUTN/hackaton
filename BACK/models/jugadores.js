@@ -1,22 +1,7 @@
-import { Jugador } from "../models/Jugador";
+import { Jugador } from "./jugadorModel.js";
 
 export const jugadoresData = [
-  new Jugador({
-    id: "jugador",
-    nombre: "Jugador",
-    tipo: "human",
-    color: "green",
-  }),
-  new Jugador({
-    id: "bot-1",
-    nombre: "Bot 1",
-    tipo: "bot",
-    color: "red",
-  }),
-  new Jugador({
-    id: "bot-2",
-    nombre: "Bot 2",
-    tipo: "bot",
-    color: "blue",
-  }),
+  new Jugador("jugador-1", "Jugador", "humano", "verde"),
+  new Jugador("bot-1", "Bot Norte", "bot", "rojo"),
+  new Jugador("bot-2", "Bot Sur", "bot", "azul"),
 ];

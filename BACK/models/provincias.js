@@ -1,76 +1,15 @@
-import { Provincia } from "../models/provinciaModel";
+import { Provincia } from "./provinciaModel.js";
 
 export const provinciasData = [
-  new Provincia({
-    id: "altiplano",
-    nombre: "Altiplano",
-    vecinos: ["gran-chaquena", "valles-del-norte", "patagonia-norte" ],
-  }),
-
-  new Provincia({
-    id: "gran-chaquena",
-    nombre: "Gran Chaquena",
-    vecinos: ["altiplano", "valles-del-norte", "litoral", "pampa-central"],
-  }),
-
-  new Provincia({
-    id: "valles-del-norte",
-    nombre: "Valles del Norte",
-    vecinos: ["altiplano", "gran-chaquena", "cuyo", "pampa-central"],
-  }),
-
-  new Provincia({
-    id: "litoral",
-    nombre: "Litoral",
-    vecinos: ["gran-chaquena", "pampa-central", "costa-atlantica", "tierra-del-fuego"],
-  }),
-
-  new Provincia({
-    id: "cuyo",
-    nombre: "Cuyo",
-    vecinos: ["valles-del-norte", "pampa-central", "cordillera-sur"],
-  }),
-
-  new Provincia({
-    id: "pampa-central",
-    nombre: "Pampa Central",
-    vecinos: [
-      "gran-chaquena",
-      "valles-del-norte",
-      "litoral",
-      "cuyo",
-      "cordillera-sur",
-      "costa-atlantica",
-    ],
-  }),
-
-  new Provincia({
-    id: "cordillera-sur",
-    nombre: "Cordillera Sur",
-    vecinos: ["cuyo", "pampa-central", "patagonia-norte", "costa-atlantica"],
-  }),
-
-  new Provincia({
-    id: "costa-atlantica",
-    nombre: "Costa Atlantica",
-    vecinos: ["litoral", "pampa-central", "patagonia-norte", "cordillera-sur" ],
-  }),
-
-  new Provincia({
-    id: "patagonia-norte",
-    nombre: "Patagonia Norte",
-    vecinos: ["cordillera-sur", "costa-atlantica", "patagonia-austral", "altiplano" ],
-  }),
-
-  new Provincia({
-    id: "patagonia-austral",
-    nombre: "Patagonia Austral",
-    vecinos: ["patagonia-norte", "tierra-del-fuego"],
-  }),
-
-  new Provincia({
-    id: "tierra-del-fuego",
-    nombre: "Tierra del Fuego",
-    vecinos: ["patagonia-austral", "litoral"],
-  }),
+  new Provincia("altiplano", "Altiplano", null, 0, ["gran-chaquena", "valles-del-norte"], false),
+  new Provincia("gran-chaquena", "Gran Chaqueña", null, 0, ["altiplano", "valles-del-norte", "litoral", "pampa-central"], false),
+  new Provincia("valles-del-norte", "Valles del Norte", null, 0, ["altiplano", "gran-chaquena", "cuyo", "pampa-central"], false),
+  new Provincia("litoral", "Litoral", null, 0, ["gran-chaquena", "pampa-central", "costa-atlantica"], false),
+  new Provincia("cuyo", "Cuyo", null, 0, ["valles-del-norte", "pampa-central", "cordillera-sur"], false),
+  new Provincia("pampa-central", "Pampa Central", null, 0, ["gran-chaquena", "valles-del-norte", "litoral", "cuyo", "cordillera-sur", "costa-atlantica", "patagonia-norte"], false),
+  new Provincia("cordillera-sur", "Cordillera Sur", null, 0, ["cuyo", "pampa-central", "patagonia-norte"], false),
+  new Provincia("costa-atlantica", "Costa Atlántica", null, 0, ["litoral", "pampa-central", "patagonia-norte"], false),
+  new Provincia("patagonia-norte", "Patagonia Norte", null, 0, ["pampa-central", "cordillera-sur", "costa-atlantica", "patagonia-austral"], false),
+  new Provincia("patagonia-austral", "Patagonia Austral", null, 0, ["patagonia-norte", "tierra-del-fuego"], false),
+  new Provincia("tierra-del-fuego", "Tierra del Fuego", null, 0, ["patagonia-austral"], false),
 ];
