@@ -319,66 +319,45 @@ body {
 
 .province-button {
   position: absolute;
-  border: 2px solid rgba(0, 0, 0, 0.3);
-  background-color: rgba(100, 150, 200, 0.3);
+  /* Hitbox circular - centrado en x,y */
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: none;
+  background: transparent;
   cursor: pointer;
   transition: all var(--transition);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6px;
-  border-radius: 2px;
-  overflow: hidden;
-  font-size: 10px;
+  padding: 0;
+  /* Sin fondo ni borde visible */
+  outline: none;
 }
 
 .province-button:hover {
-  background-color: rgba(100, 150, 200, 0.5);
-  transform: scale(1.08);
-  box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
-  border-color: rgba(255, 255, 255, 0.5);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, transparent 70%);
+  transform: translate(-50%, -50%) scale(1.15);
 }
 
 .province-button.selected {
-  background-color: rgba(255, 215, 0, 0.8);
-  box-shadow: 0 0 20px rgba(255, 215, 0, 1), inset 0 0 8px rgba(255, 255, 255, 0.3);
-  border: 2px solid white;
-  font-weight: bold;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.25) 0%, transparent 70%);
+  box-shadow: 0 0 18px 6px rgba(255, 215, 0, 0.7);
 }
 
 .province-button.valid-target {
-  box-shadow: 0 0 16px rgba(255, 215, 0, 0.9);
-  border: 2px dashed var(--text-accent);
-  background-color: rgba(255, 215, 0, 0.4);
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.15) 0%, transparent 70%);
+  box-shadow: 0 0 14px 4px rgba(255, 215, 0, 0.5);
+  animation: pulse-target 1.2s infinite alternate;
+}
+
+@keyframes pulse-target {
+  from { box-shadow: 0 0 10px 3px rgba(255, 215, 0, 0.4); }
+  to   { box-shadow: 0 0 20px 7px rgba(255, 215, 0, 0.8); }
 }
 
 .province-button.secondary-selected {
-  background-color: rgba(255, 215, 0, 0.9);
-  box-shadow: 0 0 20px rgba(255, 215, 0, 1), inset 0 0 8px rgba(255, 255, 255, 0.4);
-  border: 2px solid var(--text-accent);
-  font-weight: bold;
-}
-
-.province-info {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2px;
-  text-align: center;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-}
-
-.province-name {
-  font-size: 8px;
-  font-weight: 600;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 0.3px;
-  line-height: 1;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.3) 0%, transparent 70%);
+  box-shadow: 0 0 20px 8px rgba(255, 215, 0, 0.8);
 }
 
 /* ============================================
@@ -389,18 +368,22 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
-  background: rgba(0, 0, 0, 0.5);
+  width: 24px;
+  height: 24px;
+  background: rgba(0, 0, 0, 0.75);
   border: 2px solid white;
   border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(0,0,0,0.4);
+  pointer-events: none; /* el click pasa al button padre */
+  transition: all 0.2s;
 }
 
 .troops-count {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: bold;
   color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+  line-height: 1;
 }
 
 /* ============================================
