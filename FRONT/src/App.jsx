@@ -1,31 +1,80 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useGameState } from './hooks/useGameState';
+import { PlayerStations } from './components/PlayerStations';
+import { GameBoard } from './components/GameBoard';
+import { SidePanel } from './components/SidePanel';
+import './App.css';
 
-// importar páginas
-import Home from './pages/Home';
+export default function App() {
+  const {
+    gameState,
+    provincesState,
+    players,
+    currentPlayer,
+    selectProvince,
+    clearSelection,
+    reinforce,
+    attack,
+    moveUnits,
+    nextPhase,
+    getValidTargets,
+    getAvailableReinforcements,
+    canReinforce,
+    canAttack,
+    canMove,
+  } = useGameState();
 
-function AppContent() {
+  const validTargets = getValidTargets();
+
+  // Simulación de log de juego (en real sería desde estado/backend)
+  const gameLog = [
+    '🟢 Jugador 1 conquistó Cuyo',
+    '🔵 Bot reforzó Litoral',
+    '❌ Ataque fallido en Pampa Central',
+  ];
+
   return (
-    <div className="App">
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
+    <div className="app-container">
+      {/* Panel Izquierdo */}
+      <aside className="left-panel">
+        <PlayerStations
+          players={players}
+          currentPlayer={currentPlayer}
+          gameState={gameState}
+          provincesState={provincesState}
+          getAvailableReinforcements={getAvailableReinforcements}
+        />
+      </aside>
+
+      {/* Panel Central */}
+      <main className="center-panel">
+        <GameBoard
+          provincesState={provincesState}
+          players={players}
+          selectedProvince={gameState.selectedProvince}
+          secondarySelected={gameState.secondarySelected}
+          validTargets={validTargets}
+          onProvinceClick={selectProvince}
+        />
+      </main>
+
+      {/* Panel Derecho */}
+      <aside className="right-panel">
+        <SidePanel
+          currentEvent={gameState.currentEvent}
+          message={gameState.message}
+          gameLog={gameLog}
+          canReinforce={canReinforce}
+          canAttack={canAttack}
+          canMove={canMove}
+          onReinforce={reinforce}
+          onAttack={attack}
+          onMove={moveUnits}
+          onNextPhase={nextPhase}
+          onClearSelection={clearSelection}
+          selectedProvince={gameState.selectedProvince}
+          currentPhase={gameState.currentPhase}
+        />
+      </aside>
     </div>
-  )
+  );
 }
-
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <Router>
-      <AppContent />
-    </Router>
-
-  )
-}
-
-export default App
